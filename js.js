@@ -1,6 +1,9 @@
 $(function() {
   var uploader = $('input[name="photo"]')
     , body = $('body')
+    , lyricsContainer = $("#lyrics-container")
+
+  lyricsContainer.hide()
 
   $('#upload-photo').on('submit', function(e) {
     e.preventDefault()
@@ -36,89 +39,98 @@ $(function() {
           , 0, sY, sWidth, sHeight
           , 0, dY, dWidth, dHeight)
 
+        //refresh Caman data
         Caman("#photo-container", function() {
           this.reloadCanvasData()
           this.render()
+
+          //show lyrics related components
+          lyricsContainer.show()
         })
 
-        var lyrics = form.find('input[name=lyrics]').val()
-          , lineCount = lyrics.split(',').length
-          , sangCount = Math.max(1, Math.floor(Math.random() * lyrics.length))
-          , sangText = lyrics.substr(0, sangCount)
-          , singText = lyrics.substr(sangCount)
-          , maxTextLength = canvas.width * 0.8
-          , start = (canvas.width - maxTextLength) / 2
-          , end = canvas.width - start
+        var addLyrics = $("#add-lyrics")
 
-        ctx.font = "26px sans"
-        ctx.lineWidth = 3
-        if(lineCount == 1) {
-          var lineY = canvas.height - dY - 20
-          var lineX = start
-          
-          ctx.strokeStyle = 'white'
-          ctx.strokeText(sangText, lineX, lineY)
-          ctx.fillStyle = '#5179e8'
-          ctx.fillText(sangText, lineX, lineY)
+        addLyrics.on("click", function(e) {
+          var lyrics = $("#lyrics").val()
+          e.preventDefault()
+          var lineCount = lyrics.split(",").length
+            , sangCount = Math.max(1, Math.floor(Math.random() * lyrics.length))
+            , sangText = lyrics.substr(0, sangCount)
+            , singText = lyrics.substr(sangCount)
+            , maxTextLength = canvas.width * 0.8
+            , start = (canvas.width - maxTextLength) / 2
+            , end = canvas.width - start
 
-          singLineX = lineX + ctx.measureText(sangText).width
-          ctx.strokeStyle = '#111'
-          ctx.strokeText(singText, singLineX, lineY)
-          ctx.fillStyle = '#eee'
-          ctx.fillText(singText, singLineX, lineY)
-        } else if(lineCount == 2) {
-          var firstLineText = lyrics.split(',')[0]
-            , secondLineText = lyrics.split(',')[1]
-            , firstLineY = canvas.height - dY - 60
-            , firstLineX = start
-            , secondLineY = firstLineY + 40
-            , secondLineX = end - ctx.measureText(secondLineText).width
-
-          if(sangText.length < firstLineText.length) {
-            var firstLineRestText = firstLineText.substr(sangText.length)
-              , firstRestX = firstLineX + ctx.measureText(sangText).width
-
+          ctx.font = "26px sans"
+          ctx.lineWidth = 3
+          if(lineCount == 1) {
+            var lineY = canvas.height - dY - 20
+            var lineX = start
+            
             ctx.strokeStyle = 'white'
-            ctx.strokeText(sangText, firstLineX, firstLineY)
+            ctx.strokeText(sangText, lineX, lineY)
             ctx.fillStyle = '#5179e8'
-            ctx.fillText(sangText, firstLineX, firstLineY)
+            ctx.fillText(sangText, lineX, lineY)
 
+            singLineX = lineX + ctx.measureText(sangText).width
             ctx.strokeStyle = '#111'
-            ctx.strokeText(firstLineRestText, firstRestX, firstLineY)
-            ctx.strokeText(secondLineText, secondLineX, secondLineY)
+            ctx.strokeText(singText, singLineX, lineY)
             ctx.fillStyle = '#eee'
-            ctx.fillText(firstLineRestText, firstRestX, firstLineY)
-            ctx.fillText(secondLineText, secondLineX, secondLineY)
-          } else if(sangText.length > firstLineText.length) {
-            var secondLineColoredText = secondLineText.substr(0, sangText.length - firstLineText.length)
-              , secondLineRestText = secondLineText.substr(sangText.length - firstLineText.length)
-              , secondRestX = secondLineX + ctx.measureText(secondLineColoredText).width
+            ctx.fillText(singText, singLineX, lineY)
+          } else if(lineCount == 2) {
+            var firstLineText = lyrics.split(',')[0]
+              , secondLineText = lyrics.split(',')[1]
+              , firstLineY = canvas.height - dY - 60
+              , firstLineX = start
+              , secondLineY = firstLineY + 40
+              , secondLineX = end - ctx.measureText(secondLineText).width
 
-            ctx.strokeStyle = 'white'
-            ctx.strokeText(firstLineText, firstLineX, firstLineY)
-            ctx.strokeText(secondLineColoredText, secondLineX, secondLineY)
-            ctx.fillStyle = '#5179e8'
-            ctx.fillText(firstLineText, firstLineX, firstLineY)
-            ctx.fillText(secondLineColoredText, secondLineX, secondLineY)
+            if(sangText.length < firstLineText.length) {
+              var firstLineRestText = firstLineText.substr(sangText.length)
+                , firstRestX = firstLineX + ctx.measureText(sangText).width
 
-            ctx.strokeStyle = '#111'
-            ctx.strokeText(secondLineRestText, secondRestX, secondLineY)
-            ctx.fillStyle = '#eee'
-            ctx.fillText(secondLineRestText, secondRestX, secondLineY)
-          } else if(sangText.length == firstLineText.length) {
-            ctx.strokeStyle = 'white'
-            ctx.strokeText(firstLineText, firstLineX, firstLineY)
-            ctx.fillStyle = '#5179e8'
-            ctx.fillText(firstLineText, firstLineX, firstLineY)
+              ctx.strokeStyle = 'white'
+              ctx.strokeText(sangText, firstLineX, firstLineY)
+              ctx.fillStyle = '#5179e8'
+              ctx.fillText(sangText, firstLineX, firstLineY)
 
-            ctx.strokeStyle = '#111'
-            ctx.strokeText(secondLineText, secondLineX, secondLineY)
-            ctx.fillStyle = '#eee'
-            ctx.fillText(secondLineText, secondLineX, secondLineY)
+              ctx.strokeStyle = '#111'
+              ctx.strokeText(firstLineRestText, firstRestX, firstLineY)
+              ctx.strokeText(secondLineText, secondLineX, secondLineY)
+              ctx.fillStyle = '#eee'
+              ctx.fillText(firstLineRestText, firstRestX, firstLineY)
+              ctx.fillText(secondLineText, secondLineX, secondLineY)
+            } else if(sangText.length > firstLineText.length) {
+              var secondLineColoredText = secondLineText.substr(0, sangText.length - firstLineText.length)
+                , secondLineRestText = secondLineText.substr(sangText.length - firstLineText.length)
+                , secondRestX = secondLineX + ctx.measureText(secondLineColoredText).width
+
+              ctx.strokeStyle = 'white'
+              ctx.strokeText(firstLineText, firstLineX, firstLineY)
+              ctx.strokeText(secondLineColoredText, secondLineX, secondLineY)
+              ctx.fillStyle = '#5179e8'
+              ctx.fillText(firstLineText, firstLineX, firstLineY)
+              ctx.fillText(secondLineColoredText, secondLineX, secondLineY)
+
+              ctx.strokeStyle = '#111'
+              ctx.strokeText(secondLineRestText, secondRestX, secondLineY)
+              ctx.fillStyle = '#eee'
+              ctx.fillText(secondLineRestText, secondRestX, secondLineY)
+            } else if(sangText.length == firstLineText.length) {
+              ctx.strokeStyle = 'white'
+              ctx.strokeText(firstLineText, firstLineX, firstLineY)
+              ctx.fillStyle = '#5179e8'
+              ctx.fillText(firstLineText, firstLineX, firstLineY)
+
+              ctx.strokeStyle = '#111'
+              ctx.strokeText(secondLineText, secondLineX, secondLineY)
+              ctx.fillStyle = '#eee'
+              ctx.fillText(secondLineText, secondLineX, secondLineY)
+            }
+          } else {
+            alert("Hey there!\nThis is lyrics, not danmaku!")
           }
-        } else {
-          alert("Hey there!\nThis is lyrics, not danmaku!")
-        }
+        })
 
         // image filter
         var fillBorder = function() {

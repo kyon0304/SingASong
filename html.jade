@@ -6,9 +6,6 @@ html(lang="en")
     form(id='upload-photo')
       .form-fileds
         input(type='file' name='photo')
-      .form-fileds
-        label Lyrics(seperated by ,)
-        input(text = "lyrics" name = 'lyrics')
       button(type="submit") 提交
 
     nav#buttons(class="centers")
@@ -20,5 +17,11 @@ html(lang="en")
       a.btn(id="colorBtn", href="#") Add Blue
 
     canvas(id='photo-container')
+
+    #lyrics-container()
+      span Lyrics(separated by ,):
+      input#lyrics(placeholder="input your lyrics here")
+      a.btn(id="add-lyrics", href="#") Add Lyrics
+
     script(src="bower_components/jquery/dist/jquery.min.js")
     script(src="bower_components/caman/dist/caman.full.min.js")
