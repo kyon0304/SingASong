@@ -1,0 +1,6 @@
+{
+  "title": "zhuji",
+  "css_pre_processor": "stylus",
+  "js_pre_processor": "none",
+  "html_pre_processor": "jade"
+}
