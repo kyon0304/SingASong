@@ -4,7 +4,7 @@ html(lang="en")
     title zhuji
   body
     form(id='upload-photo')
-      .form-fileds
+      .form-fields
         input(type='file' name='photo')
       button(type="submit") 提交
 
@@ -22,6 +22,15 @@ html(lang="en")
       span Lyrics(separated by ,):
       input#lyrics(placeholder="input your lyrics here")
       a.btn(id="add-lyrics", href="#") Add Lyrics
+
+    form(id="lyrics-finder")
+      .form-fields
+        input(type="text" name="title" placeholder="input your song title here")
+      .form-fields
+        input(type="text" name="artist" placeholder="input your song artist here")
+      button(type="submit") find
+
+    #result
 
     script(src="bower_components/jquery/dist/jquery.min.js")
     script(src="bower_components/caman/dist/caman.full.min.js")

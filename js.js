@@ -5,6 +5,20 @@ $(function() {
 
   lyricsContainer.hide()
 
+  $("#lyrics-finder").on("submit", function(e) {
+    e.preventDefault()
+    var form = $(this)
+      , title = form.find("input[name=title]").val()
+      , artist = form.find("input[name=artist]").val()
+      , url = "findLyric.py"
+
+    var posting = $.post( url, {s : title})
+
+    posting.done(function(data) {
+      $("#result").empty().append(data)
+    })
+  })
+
   $('#upload-photo').on('submit', function(e) {
     e.preventDefault()
     var form = $(this)
