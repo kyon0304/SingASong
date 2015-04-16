@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+  head
+    title zhuji
+  body
+    form(id='upload-photo')
+      .form-fileds
+        input(type='file' name='photo')
+      button(type="submit") 提交
+
+    nav#buttons(class="centers")
+      a.btn(id="resetBtn", href="#") Reset Photo
+      a.btn(id='brightnessBtn', href="#") Brightness
+      a.btn(id="noiseBtn", href="#") Noise
+      a.btn(id="sepiaBtn", href="#") Sepia
+      a.btn(id="contrastBtn", href="#") Contrast
+      a.btn(id="colorBtn", href="#") Add Blue
+
+    canvas(id='photo-container')
+
+    #lyrics-container()
+      span Lyrics(separated by ,):
+      input#lyrics(placeholder="input your lyrics here")
+      a.btn(id="add-lyrics", href="#") Add Lyrics
+
+    script(src="bower_components/jquery/dist/jquery.min.js")
+    script(src="bower_components/caman/dist/caman.full.min.js")
