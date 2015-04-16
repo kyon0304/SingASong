@@ -1,3 +1,6 @@
+//= require "jquery"
+//= require "caman"
+
 $(function() {
   var uploader = $('input[name="photo"]')
     , body = $('body')

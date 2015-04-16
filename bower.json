@@ -4,7 +4,7 @@
   "authors": [
     "kyon <kyon0304@gmail.com>"
   ],
-  "main": "js.js",
+  "main": "source/javascripts/all.js",
   "license": "MIT",
   "ignore": [
     "**/.*",
