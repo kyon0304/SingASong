@@ -5,8 +5,10 @@ $(function() {
   var uploader = $('input[name="photo"]')
     , body = $('body')
     , lyricsContainer = $("#lyrics-container")
+    , effectButtons = $("#buttons")
 
   lyricsContainer.hide()
+  effectButtons.hide()
 
   $('#upload-photo').on('submit', function(e) {
     e.preventDefault()
@@ -49,6 +51,7 @@ $(function() {
 
           //show lyrics related components
           lyricsContainer.show()
+          effectButtons.show()
         })
 
         var addLyrics = $("#add-lyrics")
