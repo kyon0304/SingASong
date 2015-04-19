@@ -6,6 +6,7 @@ $(function() {
     , body = $('body')
     , lyricsContainer = $("#lyrics-container")
     , effectButtons = $("#buttons")
+    , canvasContainer = $("#canvas-container")
 
   lyricsContainer.hide()
   effectButtons.hide()
@@ -18,6 +19,7 @@ $(function() {
 
     fileReader.readAsDataURL(uploader[0].files[0])
     fileReader.onload = function(e) {
+      //var canvas = document.createElement('canvas')
       var canvas = $('#photo-container')[0]
         , ctx = canvas.getContext('2d')
 
@@ -26,7 +28,7 @@ $(function() {
       ctx.fillStyle = "#000"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      body.append(canvas)
+      canvasContainer.append(canvas)
 
       var image = new Image()
       image.src = e.target.result

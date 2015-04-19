@@ -74,4 +74,3 @@ end
 sprockets.append_path File.join root, 'bower_components'
 sprockets.import_asset 'caman'
 sprockets.import_asset 'jquery'
-sprockets.import_asset 'bootstrap'

@@ -1,20 +1,26 @@
-.container-fluid
-  form(id='upload-photo')
-    .form-fileds
-      input(type='file' name='photo')
-    button(type="submit") 提交
+form(id='upload-photo')
+  .form-fileds
+    input(type='file' name='photo')
+  button(type="submit") 提交
 
+#canvas-container(style="width: 400px; height: 300px")
   canvas(id='photo-container')
 
-  #buttons(class="centers")
-    a.btn(id="resetBtn" href="#") Reset Photo
+#buttons(class="centers")
+  .btn
+    a(id="resetBtn" href="#") Reset Photo
+  .btn
     a.btn(id='brightnessBtn' href="#") Brightness
+  .btn
     a.btn(id="noiseBtn" href="#") Noise
+  .btn
     a.btn(id="sepiaBtn" href="#") Sepia
+  .btn
     a.btn(id="contrastBtn" href="#") Contrast
+  .btn
     a.btn(id="colorBtn" href="#") Add Blue
 
-  #lyrics-container()
-    span Lyrics(separated by ,):
-    input#lyrics(placeholder="input your lyrics here")
-    a.btn(id="add-lyrics", href="#") Add Lyrics
+#lyrics-container
+  span Lyrics(separated by ,):
+  input#lyrics(placeholder="input your lyrics here")
+  a.btn(id="add-lyrics", href="#") Add
