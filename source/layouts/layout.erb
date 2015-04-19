@@ -9,10 +9,11 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title><%= current_page.data.title || "Sing A Song" %></title>
+    <title><%= current_page.data.title || "Say A Song" %></title>
     
     <%= stylesheet_link_tag "normalize", "all" %>
     <%= javascript_include_tag  "all" %>
+    <link rel="shortcut icon" href="/images/favicon.ico">
   </head>
   
   <body class="<%= page_classes %>">

@@ -2,22 +2,21 @@
 //= require "caman"
 
 $(function() {
-  var uploader = $('input[name="photo"]')
-    , body = $('body')
+  var body = $('body')
     , lyricsContainer = $("#lyrics-container")
     , effectButtons = $("#buttons")
     , canvasContainer = $("#canvas-container")
+    , upload = $("#photo")
 
   lyricsContainer.hide()
   effectButtons.hide()
 
-  $('#upload-photo').on('submit', function(e) {
+  photo.onchange = function(e) {
     e.preventDefault()
-    var form = $(this)
-      , uploader = form.find('input[name=photo]')
-      , fileReader = new FileReader()
+    canvasContainer.css("border", "none")
+    var fileReader = new FileReader()
 
-    fileReader.readAsDataURL(uploader[0].files[0])
+    fileReader.readAsDataURL(e.target.files[0])
     fileReader.onload = function(e) {
       //var canvas = document.createElement('canvas')
       var canvas = $('#photo-container')[0]
@@ -209,5 +208,5 @@ $(function() {
 
       }
     }
-  })
+  }
 })

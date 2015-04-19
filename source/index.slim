@@ -1,9 +1,6 @@
-form(id='upload-photo')
-  .form-fileds
-    input(type='file' name='photo')
-  button(type="submit") 提交
+input(type='file' id='photo' accept="image/x-png, image/gif, image/jpeg")
 
-#canvas-container(style="width: 400px; height: 300px")
+#canvas-container(style="width: 400px; height: 300px; border: 5px dashed #aaa; border-radius: 5px")
   canvas(id='photo-container')
 
 #buttons(class="centers")
@@ -21,6 +18,6 @@ form(id='upload-photo')
     a.btn(id="colorBtn" href="#") Add Blue
 
 #lyrics-container
-  span Lyrics(separated by ,):
-  input#lyrics(placeholder="input your lyrics here")
-  a.btn(id="add-lyrics", href="#") Add
+  span Lyrics: 
+  input#lyrics(placeholder="line break by ','")
+  a.btn(id="add-lyrics" href="#") Add
