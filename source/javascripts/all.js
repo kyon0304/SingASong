@@ -1,6 +1,3 @@
-//= require "jquery"
-//= require "caman"
-
 $(function() {
   var body = $('body')
     , lyricsContainer = $("#lyrics-container")

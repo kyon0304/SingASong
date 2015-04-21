@@ -34,7 +34,25 @@ a:hover {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  max-width: 400px;
+  max-height: 300px;
+  width: 400px;
+  height: 300px;
+  border: 5px dashed #aaa;
+  border-radius: 5px;
+}
+
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    #canvas-container {
+      width: 360px;
+      height: 270px;
+    }
+  }
 
 #photo {
   margin-left: auto;
