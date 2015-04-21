@@ -19,8 +19,8 @@ $(function() {
       var canvas = $('#photo-container')[0]
         , ctx = canvas.getContext('2d')
 
-      canvas.width  = 400
-      canvas.height = 300
+      canvas.width  = canvasContainer.width()
+      canvas.height = canvasContainer.height()
       ctx.fillStyle = "#000"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -29,7 +29,7 @@ $(function() {
       var image = new Image()
       image.src = e.target.result
       image.onload = function() {
-        var sub = image.height - image.width * 0.7
+        var sub = image.height - image.width * 0.75
           , sY = sub > 0 ? sub : 0
           , sWidth = image.width
           , sHeight = image.height - 2*sY
@@ -148,8 +148,6 @@ $(function() {
           ctx.save()
           ctx.setTransform(1, 0, 0, 1, 0, 0)
           ctx.clearRect(0, 0, canvas.width, canvas.height)
-          canvas.width  = 400
-          canvas.height = 300
           ctx.fillStyle = "#000"
           ctx.fillRect(0, 0, canvas.width, canvas.height)
           ctx.drawImage(image
