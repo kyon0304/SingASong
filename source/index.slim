@@ -1,21 +1,23 @@
-input(type='file' id='photo' accept="image/x-png, image/gif, image/jpeg")
+#upload
+  input(type='file' id='photo' accept="image/x-png, image/gif, image/jpeg")
 
-#canvas-container
-  canvas(id='photo-container')
-
-#buttons(class="centers")
-  .btn
-    a(id="resetBtn" href="#") Reset Photo
-  .btn
-    a.btn(id='brightnessBtn' href="#") Brightness
-  .btn
-    a.btn(id="noiseBtn" href="#") Noise
-  .btn
-    a.btn(id="sepiaBtn" href="#") Sepia
-  .btn
-    a.btn(id="contrastBtn" href="#") Contrast
-  .btn
-    a.btn(id="colorBtn" href="#") Add Blue
+#content
+  #canvas-container
+    canvas(id='photo-container')
+  
+  #buttons(class="centers")
+    .btn
+      a.abtn(id="resetBtn" href="#") Reset Photo
+    .btn
+      a.abtn(id='brightnessBtn' href="#") Brightness
+    .btn
+      a.abtn(id="noiseBtn" href="#") Noise
+    .btn
+      a.abtn(id="sepiaBtn" href="#") Sepia
+    .btn
+      a.abtn(id="contrastBtn" href="#") Contrast
+    .btn
+      a.abtn(id="colorBtn" href="#") Add Blue
 
 #lyrics-container
   span Lyrics: 

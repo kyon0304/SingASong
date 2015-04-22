@@ -4,9 +4,18 @@ $(function() {
     , effectButtons = $("#buttons")
     , canvasContainer = $("#canvas-container")
     , upload = $("#photo")
+    , canvas = $('#photo-container')[0]
+    , ctx = canvas.getContext('2d')
 
   lyricsContainer.hide()
   effectButtons.hide()
+
+  function resizeCanvas() {
+    canvas.width = canvasContainer.width()
+    canvas.height = canvasContainer.height()
+  }
+
+  window.addEventListener("orientationchange", resizeCanvas, false);
 
   photo.onchange = function(e) {
     e.preventDefault()
@@ -14,10 +23,6 @@ $(function() {
 
     fileReader.readAsDataURL(e.target.files[0])
     fileReader.onload = function(e) {
-      //var canvas = document.createElement('canvas')
-      var canvas = $('#photo-container')[0]
-        , ctx = canvas.getContext('2d')
-
       canvas.width  = canvasContainer.width()
       canvas.height = canvasContainer.height()
 
