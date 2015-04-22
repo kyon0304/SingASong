@@ -43,6 +43,12 @@ a:hover {
     border: 2px dashed #aaa;
     border-radius: 5px;
   }
+
+  #buttons {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+  }
 }
 
 @media all and (max-width: 768px) {
@@ -51,6 +57,12 @@ a:hover {
     margin-right: auto;
     width: 300px;
     height: 225px;
+  }
+
+  #buttons {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
   }
 }
 
