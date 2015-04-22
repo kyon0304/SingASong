@@ -10,7 +10,6 @@ $(function() {
 
   photo.onchange = function(e) {
     e.preventDefault()
-    canvasContainer.css("border", "none")
     var fileReader = new FileReader()
 
     fileReader.readAsDataURL(e.target.files[0])
@@ -21,25 +20,53 @@ $(function() {
 
       canvas.width  = canvasContainer.width()
       canvas.height = canvasContainer.height()
-      ctx.fillStyle = "#000"
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       canvasContainer.append(canvas)
 
       var image = new Image()
       image.src = e.target.result
       image.onload = function() {
-        var sub = image.height - image.width * 0.75
-          , sY = sub > 0 ? sub : 0
-          , sWidth = image.width
-          , sHeight = image.height - 2*sY
-          , scaleRatio = canvas.width / image.width
-          , dWidth = sWidth * scaleRatio
-          , dHeight = sHeight * scaleRatio
-          , dY = (canvas.height - dHeight) / 2
+        var sWidth, sHeight, sub, sY, sX
+          , dY, dWidth, dHeight
+        if(image.height < canvas.height ||
+            image.widht < canvas.width) {
+          alert("image is too small!")
+          return
+        }
 
+        if (image.height > image.width * 0.5) {
+          sub = image.height - image.width * 0.5
+          sWidth = image.width
+          sHeight = image.height - sub
+          sY = sub / 2
+          sX = 0
+          scaleRatio = canvas.width / image.width
+        } else {
+          sub = image.width * 0.5 - image.height
+          sWidth = image.width - sub
+          sHeight = image.height
+          sX = sub / 2
+          sY = 0
+          scaleRatio = canvas.height * 0.67 / sHeight
+        }
+        dWidth = sWidth * scaleRatio
+        dHeight = sHeight * scaleRatio
+        dY = (canvas.height - dHeight) / 2
+        
+       // var sub = image.height - image.width * 0.75
+       //   , sY = sub > 0 ? sub : 0
+       //   , sWidth = image.width
+       //   , sHeight = image.height - 2*sY
+       //   , scaleRatio = canvas.width / image.width
+       //   , dWidth = sWidth * scaleRatio
+       //   , dHeight = sHeight * scaleRatio
+       //   , dY = (canvas.height - dHeight) / 2
+
+        canvasContainer.css("border", "none")
+        ctx.fillStyle = "#000"
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
         ctx.drawImage(image
-          , 0, sY, sWidth, sHeight
+          , sX, sY, sWidth, sHeight
           , 0, dY, dWidth, dHeight)
 
         //refresh Caman data
