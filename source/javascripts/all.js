@@ -7,8 +7,8 @@ $(function() {
     , canvas = $('#photo-container')[0]
     , ctx = canvas.getContext('2d')
 
-  lyricsContainer.hide()
-  effectButtons.hide()
+  lyricsContainer.css("visibility", "hidden")
+  effectButtons.css("visibility", "hidden")
 
   photo.onchange = function(e) {
     e.preventDefault()
@@ -73,8 +73,8 @@ $(function() {
           this.render()
 
           //show lyrics related components
-          lyricsContainer.show()
-          effectButtons.show()
+          lyricsContainer.css("visibility", "visible")
+          effectButtons.css("visibility", "visible")
         })
 
         var addLyrics = $("#add-lyrics")
