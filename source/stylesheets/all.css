@@ -48,6 +48,28 @@ a:hover {
     margin-bottom: 15px;
     display: inline-block;
   }
+  
+  #photo {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px; }
+  
+  #lyrics-container {
+    padding-top: auto;
+    padding-bottom: auto; }
+  
+  #add-lyrics {
+    margin-left: 5px;
+    margin-top: auto;
+    margin-bottom: auto; }
+  
+  #lyrics {
+    border: none;
+    border: solid 1px #ccc;
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px; }
 }
 
 @media all and (max-width: 768px) and (orientation: portrait) {
@@ -56,9 +78,11 @@ a:hover {
     margin-right: auto;
     width: 300px;
     height: 225px;
+    display: block;
   }
 
   #buttons {
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width: 300px;
@@ -68,8 +92,8 @@ a:hover {
 @media all and (max-width: 768px) and  (orientation: landscape) {
   #canvas-container {
     margin-left: 10px;
-    width: 400px;
-    height: 300px;
+    width: 300px;
+    height: 225px;
     display: inline-block;
     vertical-align: middle;
   }
@@ -95,25 +119,9 @@ a:hover {
     margin-left: 10px;
     text-align: start;
   }
+
+  #lyrics-container {
+    margin-left: 10px;
+    width: 300px;
+  }
 }
-
-#photo {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5px;
-  margin-bottom: 5px; }
-
-#lyrics-container {
-  padding-top: auto;
-  padding-bottom: auto; }
-
-#add-lyrics {
-  margin-top: auto;
-  margin-bottom: auto; }
-
-#lyrics {
-  border: none;
-  border: solid 1px #ccc;
-  -webkit-border-radius: 5;
-  -moz-border-radius: 5;
-  border-radius: 5px; }

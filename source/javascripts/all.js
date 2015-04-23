@@ -10,13 +10,6 @@ $(function() {
   lyricsContainer.hide()
   effectButtons.hide()
 
-  function resizeCanvas() {
-    canvas.width = canvasContainer.width()
-    canvas.height = canvasContainer.height()
-  }
-
-  window.addEventListener("orientationchange", resizeCanvas, false);
-
   photo.onchange = function(e) {
     e.preventDefault()
     var fileReader = new FileReader()
